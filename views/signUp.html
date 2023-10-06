@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h1 class="title">{{title}}</h1>
+<div class="container signupbox">
+    <form action="./index" method="post">
+        <div class="idForm">
+            <label for="">아이디</label>
+            <input type="text" id="userid" class="userid" name="userid" placeholder="아이디"/><br />
+        </div>
+        
+        <div class="nameForm">
+            <label for="">닉네임</label>
+            <input id="username" name="username" type="text" style="cursor: auto;" class="username" placeholder="닉네임" />
+        </div>
+        
+        <div class="passForm">
+            <label for="">비밀번호</label>
+            <input id="password" name="password" type="password" class="pw" placeholder="비밀번호"/>
+        </div>
+        <a href="/">목록</a>
+        <button type="button" class="btn"><a href="/">회원가입</a></button>
+        <p>이미 계정을 갖고 계신가요? <a href="./login">지금 로그인하기</a></p>
+    </form>
+</div>
+<!-- 
+    modal 이용 
+    회원가입 버튼을 누를 시 mysql members테이블에 값 전송
+    modal 팝업으로 "회원가입이 완료되었습니다. 바로 로그인 하시겠습니까?"
+    메시지 출력후 modal의 '예 => 로그인 페이지로 이동, 아니오 => index페이지로 이동'
+
+-->
+
+<!-- <div class="passForm">
+    <i class="material-icons prefix">비밀번호 확인</i>
+    <input id="password_a" name="cpassword" type="password"class="pw" placeholder="비밀번호 확인"/>
+</div> -->
+{% endblock %}

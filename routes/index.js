@@ -30,8 +30,26 @@ router.get('/', (req, res) => {
             res.render('index', { title: "게시판 목록", row: row});
         }
     })
-    
 });
+
+
+
+
+// 회원가입
+router.get("/signUp", (req, res) =>{
+    res.render('signup', {title: "회원가입"});
+});
+
+router.post("/signUp", (req, res) =>{
+    const rs = req.body;
+    const sql = "insert into members(userid, username, userpass) values (?, ?, ?)";
+    conn.query(sql, [rs.userid, rs.username, rs.userpass], (errr, res) =>{
+
+    });
+});
+
+
+
 
 
 

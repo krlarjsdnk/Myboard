@@ -6,6 +6,7 @@ body{
     font-size: 16px;
     font-family: 'Noto Sans KR', sans-serif;
     color:#222;
+    position: relative;
 }
 a, a:link{
     color:#444;
@@ -14,6 +15,26 @@ a, a:link{
 a:hover{
     color:#222;
 }
+/* 상단 회원가입 로그인 배너 */
+.hdbanner button{
+    position: absolute;
+    display: inline-block;
+    border: none;
+    background-color: inherit;
+    top: -30px;
+}
+.hdbanner button a{
+    font-weight: 700;
+}
+.login{
+    right: 250px;
+}
+.signup{
+    right: 150px;
+}
+
+
+
 /** 목록 보기 디자인 **/
 .bbslist{
    width:100%;
