@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 {% block style %}
-
+<link rel="stylesheet" href="css/summernote-bs4.min.css">
 {% endblock %}
 
 {% block content %}
@@ -27,7 +27,7 @@
     {{row[0].contents | safe}}
 </div>
 <div class="row justify-content-end mb-5">
-    <a href="#" class="btn btn-dark text-white px-3 mr-3">답변</a>
+    <a href="/rewrite/{{row[0].num}}" class="btn btn-dark text-white px-3 mr-3">답변</a>
     <a href="/edit/{{row[0].num}}" class="btn btn-dark text-white px-3 mr-3">수정</a>
     <button type="button" 
             class="btn btn-dark text-white px-3 mr-3"
@@ -53,20 +53,58 @@
         <form>    
             <div class="modal-body">
                 <p>삭제 하시려면 비밀번호를 입력하세요</p>
-                    <input type="password" class="form-control" 
+                    <input type="password" class="form-control" id="password_del"
                            placeholder="비밀번호" /> 
+                    <input type="hidden" name="delnum" id="delnum" value="{{row[0].num}}">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-                <button type="button" class="btn btn-danger"><a href="/delete/{{row[0].num}}" class="text-white">삭제하기</a></button>
+                <button type="button" class="btn btn-danger" id="del"><a href="/del/{{row[0].num}}" class="text-white">삭제하기</a></button>
             </div>
         </form>
         </div>
     </div>
 </div>
 
+<hr />
+<form action="" name="comment_form" method="post">
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <label for="">이름</label>
+                <input type="text" name="username" id="username" class="form-control" />
+            </div>
+            <div class="col-3">
+                <label for="">비밀번호</label>
+                <input type="password" name="userpass" id="userpass" class="form-control">
+            </div>
+        </div>
+        <div class="row mt-4">
+            <textarea name="content" id="memo-content" cols="5" class="form-control"></textarea>
+        </div>
+    </div>
+</form>
+
 {% endblock %}
 
 {% block script %}
-
+<script src="js/summernote-bs4.min.js"></script>
+<script src="js/lang/summernote-ko-KR.min.js"></script>
+<script>
+    $(function(){
+        $("#memo-content").summernote({
+            tabsize: 2,
+            height:300,
+            lang:"ko-KR",
+            toolbar: [
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']]
+                ]
+        });
+    });
+</script>
 {% endblock %}

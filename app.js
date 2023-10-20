@@ -37,5 +37,5 @@ app.get("/", (req, res)=>{
     res.send("Hello Express");
 });
 app.listen(app.get('port'), ()=>{
-    console.log(app.get('port') + "에서 응답을 기다리는 중...");
+    console.log(app.get('port') + "에서 응답을 기다리는 중... http://localhost:8080");
 });
